@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chirag Bhakuni | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+
+        body {
+            background: linear-gradient(135deg,#0f2027,#1f4037,#2c5364);
+            color:white;
+            overflow-x:hidden;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:15px 8%; position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(15, 32, 39, 0.85); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(168, 224, 99, 0.1);
+        }
+
+        .profile-box-nav { display: flex; align-items: center; gap: 12px; }
+        .profile-pic-nav { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #a8e063; }
+        .profile-text-nav h4 { font-size: 14px; font-weight: 700; color: #fff; margin: 0; }
+        .profile-text-nav small { font-size: 10px; color: #a8e063; display: block; text-transform: uppercase; }
+
+        nav ul { display:flex; list-style:none; gap: 50px; }
+        nav ul li a { text-decoration:none; color:white; font-size:15px; transition:0.3s; }
+        nav ul li a:hover { color:#a8e063; }
+
+        .hero { display:flex; justify-content:space-between; align-items:center; padding:180px 8% 120px; min-height: 100vh; }
+        .hero-left { max-width:600px; }
+        .hero-left h5 { font-size:12px; letter-spacing:2px; margin-bottom:15px; color: #a8e063; }
+        .hero-left h1 { font-size:45px; margin-bottom:10px; line-height: 1.2; font-weight: 700; }
+        .hero-left h1 span { color:#a8e063; }
+        .hero-left h2 { font-size:22px; margin-bottom:15px; font-weight: 400; color: #fff; }
+        .hero-left p { font-size:15px; margin-bottom:30px; opacity:0.8; }
+        
+        .hero-right img { 
+            width:350px; height:350px; border-radius:50%; object-fit: cover; 
+            border: 8px solid rgba(168, 224, 99, 0.15); 
+            box-shadow: 0 0 30px rgba(168, 224, 99, 0.2);
+            animation: floatImage 4s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .btn1 { background:#a8e063; color:#0f2027; padding:10px 22px; border-radius:25px; text-decoration:none; font-weight: 600; border: 2px solid #a8e063; transition: 0.4s; cursor: pointer; display: inline-block;}
+        .btn1:hover { background: transparent; color: #a8e063; box-shadow: 0 0 20px #a8e063; }
+
+        .section-container { padding: 120px 8%; text-align: center; }
+        .work-title { font-size: 38px; margin-bottom: 10px; color: #a8e063; text-transform: uppercase; }
+        
+        .work-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; justify-content: center; }
+        
+        .work-card { 
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border-radius: 30px; 
+            padding: 60px 40px; border: 1px solid rgba(168,224,99,0.15); transition: 0.4s; 
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
+        }
+        .work-card:hover { transform: translateY(-10px); border-color: #a8e063; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .work-card i { font-size: 3rem; color: #a8e063; }
+        .work-btn { padding: 12px 35px; background: #a8e063; color: #000; border-radius: 25px; text-decoration: none; font-weight: 700; cursor: pointer; border: none; text-align: center; line-height: 25px;}
+
+        .contact-card {
+            max-width: 800px; margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px);
+            border: 1px solid rgba(168, 224, 99, 0.3); border-radius: 20px;
+            padding: 40px; text-align: left; box-shadow: 0 0 30px rgba(168, 224, 99, 0.1);
+        }
+        .contact-row { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .contact-row:last-child { border-bottom: none; }
+        .contact-info { display: flex; align-items: center; gap: 20px; }
+        .contact-info i { font-size: 24px; color: #a8e063; }
+        .contact-text h4 { font-size: 18px; color: #fff; margin-bottom: 4px; }
+        .contact-text p { font-size: 13px; color: #ccc; opacity: 0.8; }
+        .contact-btn { background: #a8e063; color: #000; padding: 10px 25px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 14px; transition: 0.3s; }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+            display: none; justify-content: center; align-items: center; z-index: 2000; opacity: 0; transition: 0.3s;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: rgba(20, 40, 50, 0.95); width: 90%; max-width: 800px; padding: 60px; 
+            border-radius: 30px; border: 1px solid rgba(168, 224, 99, 0.3); position: relative; text-align: left;
+            max-height: 90vh; overflow-y: auto;
+        }
+        .close-modal { position: absolute; top: 25px; right: 30px; font-size: 32px; color: #a8e063; cursor: pointer; }
+        .modal-content h2 { color: #a8e063; margin-bottom: 30px; font-size: 28px; border-bottom: 2px solid rgba(168,224,99,0.2); padding-bottom: 15px; }
+        .modal-content h3 { font-size: 20px; margin: 30px 0 15px; color: #fff; text-transform: uppercase; }
+        .modal-content p { font-size: 16px; line-height: 1.8; color: #ddd; margin-bottom: 25px; }
+        .skill-list { list-style: none; }
+        .skill-list li { font-size: 15px; margin-bottom: 20px; color: #ccc; position: relative; padding-left: 30px; }
+        .skill-list li::before { content: "→"; position: absolute; left: 0; color: #a8e063; }
+        .skill-list b { color: #a8e063; }
+
+        footer { padding: 60px; text-align: center; opacity: 0.5; font-size: 14px; }
+        @media(max-width:900px){ .hero { flex-direction:column-reverse; text-align:center; padding-top: 130px; } .hero-right img { width: 260px; height: 260px; } }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="profile-box-nav">
+        <img src="WhatsApp Image 2026-02-24 at 02.00.25.jpeg" alt="Logo" class="profile-pic-nav">
+        <div class="profile-text-nav"><h4>CHIRAG BHAKUNI</h4><small>FY BSc.IT STUDENT</small></div>
+    </div>
+    <nav><ul><li><a href="#">Home</a></li><li><a href="#projects">Project</a></li><li><a href="#passion">Passion</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+</header>
+
+<section class="hero">
+    <div class="hero-left">
+        <h5 class="reveal">More than a portfolio, it's my Digital identity ✨</h5>
+        <h1 class="reveal" id="greetText">HEY, <span>CHIRAG HERE !</span></h1>
+        <h2 class="reveal">Learner / Editor / Gamer</h2>
+        <p class="reveal">Building / Learning Experiences beyond limits.</p>
+        <div class="buttons reveal"><a class="btn1" onclick="openModal('aboutModal')">About Me</a></div>
+    </div>
+    <div class="hero-right reveal"><img src="WhatsApp Image 2026-02-24 at 02.00.25.jpeg" alt="Chirag"></div>
+</section>
+
+<div id="aboutModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('aboutModal')">&times;</span>
+        <h2>ABOUT ME</h2>
+        <p>I am <b>Chirag Bhakuni</b>, a highly motivated <b>FYBSc IT student</b> with a deep-seated passion for the digital landscape. My journey is defined by a <b>Dedicated</b> approach to exploring emerging technologies and a commitment to <b>Skill Development</b> that transcends the classroom. By blending technical academic pursuits with high-level creative editing and strategic gaming, I have cultivated a unique perspective on digital interaction and performance. I am <b>Focused</b> on bridging the gap between innovative code and engaging user experiences, ensuring that every project I undertake is a step toward <b>Continuously Improving</b> my professional capabilities.</p>
+        
+        <h3>Key Strengths</h3>
+        <ul class="skill-list">
+            <li><b>Technical Agility:</b> Actively expanding my foundational knowledge in IT through a hands-on approach to new software and programming environments.</li>
+            <li><b>Creative Excellence:</b> A professional-grade editor specializing in Instagram reels, utilizing advanced visual storytelling to drive engagement and aesthetic impact.</li>
+            <li><b>Strategic Multitasking:</b> Demonstrating a proven ability to manage complex academic schedules alongside demanding personal projects without compromising quality.</li>
+            <li><b>Competitive Discipline:</b> Leveraging years of experience as an intermediate gamer in the Free Fire community to develop rapid problem-solving skills and high-pressure decision-making.</li>
+            <li><b>Growth Mindset:</b> Entirely <b>Focused</b> on building a robust portfolio of personal projects that showcase my evolution as a developer and digital creator.</li>
+        </ul>
+    </div>
+</div>
+
+<section class="section-container" id="projects">
+    <h2 class="work-title reveal">Project</h2>
+    <div class="work-container" style="display: flex; justify-content: center;">
+        <div class="work-card reveal" style="max-width: 400px; width: 100%;">
+            <i class="fab fa-github"></i>
+            <h3>GitHub</h3>
+            <p>Explore my coding projects and repositories.</p>
+            <button class="work-btn" onclick="openModal('githubModal')">Explore</button>
+        </div>
+    </div>
+</section>
+
+<section class="section-container" id="passion">
+    <h2 class="work-title reveal">Passion</h2>
+    <div class="work-container">
+        <div class="work-card reveal">
+            <i class="fas fa-film"></i>
+            <h3>Video Editing</h3>
+            <p>Watch my edited reels and creative content.</p>
+            <a href="https://drive.google.com/drive/folders/1f--XjpSE1yyrYqBWUVTHikbRscDwRQXE" target="_blank" class="work-btn">Explore</a>
+        </div>
+        <div class="work-card reveal">
+            <i class="fas fa-gamepad"></i>
+            <h3>Gaming</h3>
+            <p>See my gaming IDs and stats.</p>
+            <button class="work-btn" onclick="openModal('gamingModal')">Explore</button>
+        </div>
+        <div class="work-card reveal">
+            <i class="fab fa-youtube"></i>
+            <h3>YouTube</h3>
+            <p>Check out my channel.</p>
+            <a href="https://youtube.com/@luisgamingofficial?si=PEuthV3N1VEbDvkv" target="_blank" class="work-btn">Explore</a>
+        </div>
+    </div>
+</section>
+
+<div id="githubModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('githubModal')">&times;</span>
+        <h2>GitHub Details</h2>
+        <h3>Skills I Learned</h3>
+        <ul class="skill-list">
+            <li><b>MySQL</b> – Basic database creation, queries, and table relationships.</li>
+            <li><b>DBMS</b> – Understanding database structure and management.</li>
+            <li><b>MS Access</b> – Managing small-scale databases.</li>
+            <li><b>C Programming (FY level)</b> – Basic concepts, loops, and file handling.</li>
+        </ul>
+        <div style="margin-top: 35px; text-align: center;">
+            <a href="https://github.com/Codewithchiru" target="_blank" style="color: #a8e063; text-decoration: none; font-size: 15px; font-weight: 600; background: rgba(168,224,99,0.1); padding: 12px 25px; border-radius: 20px; border: 1px solid #a8e063;">
+                <i class="fab fa-github"></i> Visit My GitHub Profile
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="gamingModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 750px;">
+        <span class="close-modal" onclick="closeModal('gamingModal')">&times;</span>
+        <h2>Gaming Highlights</h2>
+        <div style="display: flex; flex-direction: column; gap: 40px;">
+            <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px;">
+                <h3>1st ID - Highlights</h3>
+                <video width="100%" style="border-radius: 15px;" controls><source src="WhatsApp Video 2026-02-24 at 01.31.13.mp4" type="video/mp4"></video>
+                <button class="work-btn" style="margin-top:15px" onclick="toggleStats('stats1')">View Stats</button>
+                <div id="stats1" style="display: none; margin-top: 20px;"><img src="WhatsApp Image 2026-02-24 at 01.32.01.jpeg" width="100%" style="border-radius: 15px;"></div>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px;">
+                <h3>2nd ID - Highlights</h3>
+                <video width="100%" style="border-radius: 15px;" controls><source src="WhatsApp Video 2026-02-24 at 01.31.15.mp4" type="video/mp4"></video>
+                <button class="work-btn" style="margin-top:15px" onclick="toggleStats('stats2')">View Stats</button>
+                <div id="stats2" style="display: none; margin-top: 20px; flex-direction: column; gap: 15px;">
+                    <img src="WhatsApp Image 2026-02-24 at 01.31.43.jpeg" width="100%" style="border-radius: 15px;">
+                    <img src="WhatsApp Image 2026-02-24 at 01.31.44.jpeg" width="100%" style="border-radius: 15px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section-container" id="contact">
+    <h2 class="work-title reveal">CONTACT ME</h2>
+    <div class="contact-card reveal">
+        <div class="contact-row">
+            <div class="contact-info"><i class="far fa-envelope"></i><div class="contact-text"><h4>Email</h4><p>Professional inquiries.</p></div></div>
+            <a href="mailto:chiragbhakuni07@gmail.com" class="contact-btn">Send Email</a>
+        </div>
+        <div class="contact-row">
+            <div class="contact-info"><i class="fab fa-whatsapp"></i><div class="contact-text"><h4>WhatsApp</h4><p>Quick chat.</p></div></div>
+            <a href="https://wa.me/919321427975" target="_blank" class="contact-btn">Message Me</a>
+        </div>
+        <div class="contact-row">
+            <div class="contact-info"><i class="fab fa-instagram"></i><div class="contact-text"><h4>Instagram</h4><p>Personal updates.</p></div></div>
+            <a href="https://www.instagram.com/yaa.itz.chiruuu?igsh=MWU4eWNsdjFtOTQ1eg==" target="_blank" class="contact-btn">View Profile</a>
+        </div>
+    </div>
+</section>
+
+<footer><p>&copy; 2024 Chirag Bhakuni | Made with ❤️</p></footer>
+
+<script>
+    function openModal(id) { document.getElementById(id).style.display = "flex"; setTimeout(() => { document.getElementById(id).classList.add("active"); }, 10); }
+    function closeModal(id) { document.getElementById(id).classList.remove("active"); setTimeout(() => { document.getElementById(id).style.display = "none"; }, 300); }
+    function toggleStats(id) { let stats = document.getElementById(id); stats.style.display = (stats.style.display === "none" || stats.style.display === "") ? "flex" : "none"; }
+    window.onclick = function(e) { if (e.target.className === "modal-overlay active") { closeModal(e.target.id); } }
+    function setGreeting() {
+        const hour = new Date().getHours();
+        let msg = (hour < 12) ? "Good Morning ☀" : (hour < 17) ? "Good Afternoon 🌤" : "Good Evening 🌇";
+        document.getElementById("greetText").innerHTML = `HEY, ${msg} <br><span>CHIRAG HERE !</span>`;
+    }
+    setGreeting();
+    ScrollReveal().reveal('.reveal', { distance: '60px', duration: 1200, origin: 'bottom', interval: 150 });
+</script>
+</body>
+</html>
